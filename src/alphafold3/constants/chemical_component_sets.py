@@ -9,18 +9,17 @@
 # https://github.com/google-deepmind/alphafold3/blob/main/WEIGHTS_TERMS_OF_USE.md
 
 """Sets of chemical components."""
-
-import pickle
 from typing import Final
 
 from alphafold3.common import resources
+import fickling
 
 
 _CCD_SETS_CCD_PICKLE_FILE = resources.filename(
     resources.ROOT / 'constants/converters/chemical_component_sets.pickle'
 )
 
-_CCD_SET = pickle.load(open(_CCD_SETS_CCD_PICKLE_FILE, 'rb'))
+_CCD_SET = fickling.load(open(_CCD_SETS_CCD_PICKLE_FILE, 'rb'))
 
 # Glycan (or 'Saccharide') ligands.
 # _chem_comp.type containing 'saccharide' and 'linking' (when lower-case).

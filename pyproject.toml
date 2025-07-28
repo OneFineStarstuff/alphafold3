@@ -28,6 +28,7 @@ dependencies = [
     "tqdm",
     "typeguard==2.13.3",
     "zstandard",
+    "fickling>=0.1.3,~=0.1.0",
 ]
 
 [project.optional-dependencies]
