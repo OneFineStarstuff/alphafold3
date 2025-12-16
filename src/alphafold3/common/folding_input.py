@@ -18,7 +18,6 @@ import logging
 import lzma
 import os
 import pathlib
-import random
 import re
 import string
 from typing import Any, Final, Self, TypeAlias, cast
@@ -31,6 +30,7 @@ from alphafold3.cpp import cif_dict
 from alphafold3.structure import mmcif as mmcif_lib
 import rdkit.Chem as rd_chem
 import zstandard as zstd
+import secrets
 
 
 BondAtomId: TypeAlias = tuple[str, int, str]
@@ -818,7 +818,7 @@ class Ligand:
 def _sample_rng_seed() -> int:
   """Sample a random seed for AlphaFoldServer job."""
   # See https://alphafoldserver.com/faq#what-are-seeds-and-how-are-they-set.
-  return random.randint(0, 2**32 - 1)
+  return secrets.SystemRandom().randint(0, 2**32 - 1)
 
 
 def _validate_user_ccd_keys(keys: Sequence[str], component_name: str) -> None:
